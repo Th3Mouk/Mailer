@@ -1,0 +1,24 @@
+{
+    "name": "th3mouk/mailer",
+    "type": "library",
+    "description": "This package provide a base for Mailer Manager in Symfony2",
+    "keywords": [
+        "mailer", "manager"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremy Marodon",
+            "email": "marodon.jeremy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Th3Mouk\\Mailer\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
