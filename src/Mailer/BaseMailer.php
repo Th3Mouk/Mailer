@@ -50,12 +50,12 @@ class BaseMailer
         $this->contentType = 'text/plain';
         $this->returnPath = null;
         $this->encoder = null;
-        $this->priority = null;
+        $this->priority = 3;
 
         $this->subject = null;
         $this->body = null;
-        $this->part = null;
-        $this->attachments = null;
+        $this->part = array();
+        $this->attachments = array();
     }
 
     public function sendEmail()
@@ -68,13 +68,16 @@ class BaseMailer
             ->setCc($this->cc)
             ->setBcc($this->bcc)
             ->setReplyTo($this->replyTo)
-            ->setDate($this->date)
+            ->setDate($this->date->getTimestamp())
             ->setReturnPath($this->returnPath)
-            ->setEncoder($this->encoder)
             ->setPriority($this->priority)
             ->setSubject($this->subject)
             ->setBody($this->body, $this->contentType)
         ;
+
+        if ($this->encoder instanceof \Swift_Mime_ContentEncoder) {
+            $message->setEncoder($this->encoder);
+        }
 
         foreach ($this->part as $part) {
             $message->addPart($part['message'], $part['encoding']);

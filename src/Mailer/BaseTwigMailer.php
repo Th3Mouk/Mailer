@@ -25,7 +25,7 @@ class BaseTwigMailer extends BaseMailer
 
     public function renderHTMLBody($template, $datas)
     {
-        $this->setBody($this->templating->render($template, $datas));
+        $this->setBody($this->templating->render($template, array("contact" => $datas)));
         $this->setContentType('text/html');
     }
 }
